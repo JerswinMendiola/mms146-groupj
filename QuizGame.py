@@ -1,3 +1,9 @@
+from Question import Question
+from Player import Player
+import os
+import random
+import string
+
 class QuizGame:
     '''
     This class handles the quiz game logic.
@@ -14,41 +20,51 @@ class QuizGame:
         ''' 
         This displays a selected question to the user.
         '''
-       if self.__current_question_index < len(self.__question_bank):
-           question = self.__question_bank[self.__current_question_index]
-           print(f"\nQuestions {self.__current_question_index + 1}/{len(self.__question_bank)}")
-           print(question.text)
-           for i, option in enumerate(question.options, 1):
-               print(f"{i}. {option}")
-            return question.text, question.options
-        else:
-            print("No more questions available.")
-        
-    def check_answer(self, user_answer):
+        os.system('cls')
+        current_question = self.__question_bank[self.__curent_questions_index]
+        print(current_question.get_question_text())
+        current_answer = 0
+        for answer in current_question.get_answers():
+            letter_beside_answer = string.ascii_uppercase[current_answer]
+            current_answer += 1
+            print(letter_beside_answer + " - " + answer)
+        user_answer = input("Enter your answer: ")
+        self.check_answer(user_answer,  current_question)
+
+    def check_answer(self, user_answer, current_question):
         ''' 
         This checks if the user chose the correct answer for a selected question.
         '''
-        if self.__current_question_index < len(self.__question_bank):
-            question = self.__question_bank[self.__current_question_index]
-            is_correct = user_answer.lower() == question.correct_answer.lower()
-        if is_correct:
-            self.__score =+ 1
-            print("Correct!")
+        if user_answer.lower() == current_question.get_correct_answer().lower():
+            self.correct_answer()
         else:
-            print(f"Wrong! The Correct answer is: {question.correct_answer}")
+            self.wrong_answer()
+
+    def correct_answer(self):
+        os.system('cls')
+        print("Correct!")
+        self.__score += 1
+        self.__curent_questions_index += 1
+        input("")
+        self.display_question()
+
+    def wrong_answer(self):
+        os.system('cls')
+        print("Incorrect!")
+        input("")
+        self.display_final_results()
 
     def get_score(self):
-         ''' 
+        ''' 
         This retrieves the score of the player in the current game.
         '''
-        return self.__score, len(self.__question_bank)
+        return self.__score
 
     def shuffle_question_bank(self):
         ''' 
         This randomizes the questions order.
         '''
         random.shuffle(self.__question_bank)
-        print("Questions have been shuffled.")
 
     def reset_game(self):
         ''' 
@@ -57,17 +73,68 @@ class QuizGame:
         self.__score = 0
         self.__current_question_index = 0
 
-    def is_game_over (self):
-        '''
-        Checks if all questions have been answered.
-        '''
-        return self.__current_question_index >= len(self.__questions_bank)
-
     def display_final_results(self):
         '''
         Displays the final results of the quiz
         '''
-        total_score = self.get_score()
-        print("/n" + "="*40)
-        print("Quiz Completed!")
-        print(f"Your Final Score: {score}/{total}')
+        os.system('cls')
+        print("Your Final Score: " + str(self.get_score()))
+        self.reset_game()
+        input("")
+    
+    def get_questions(self):
+        '''
+        Returns the question bank.
+        '''
+        return self.__question_bank
+
+def send_to_option(option):
+    os.system('cls')
+    if option == 1:
+        start_game()
+        return
+    elif option == 2:
+        print("HELP MENU GOES HERE")
+    elif option == 3:
+        print("HIGHSCORES:")
+    else:
+        exit()
+    input()
+    on_main_menu = True
+    main_menu(on_main_menu)
+
+on_main_menu = True
+def main_menu(main_menu):
+    os.system('cls')
+    print("Welcome to the Smartest Byte!")
+    print("1 - Start the game")
+    print("2 - Instructions")
+    print("3 - Highscores")
+    print("4 - Quit game")
+    option = int(input("Select an option: "))
+    if option < 0 or option > 4:
+        os.system('cls')
+        pass
+    else:
+        main_menu = False
+        send_to_option(option)
+
+def load_questions():
+    questions = [
+        Question("The sky is blue.",["True","False"],"A"),
+        Question("The Philippine flag has four colors.",["True","False"],"A"),
+        Question("Which of the following is the smallest continent?.",["North America","South America","Africa","Australia"],"D")
+    ]
+    return questions
+
+def start_game():
+    os.system('cls')
+    player_name = input("Enter your name: ")
+    current_player = Player(player_name)
+    quiz_game = QuizGame(load_questions())
+    quiz_game.shuffle_question_bank()
+    quiz_game.display_question()
+
+if __name__ == "__main__":
+    while True:
+        main_menu(on_main_menu)

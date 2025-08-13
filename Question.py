@@ -19,7 +19,7 @@ class Question:
         '''
         Returns the list of the possible answers/choices
         '''
-        return self.__answers[:]
+        return self.__answers
     
     def get_correct_answer(self):
         '''
