@@ -12,9 +12,9 @@ class QuizGame:
         ''' 
         This initializes the quiz game class. It will make a list of questions and the player's score variable.
         '''
-        self.__question_bank = questions            #List of question(list)
-        self.__score = 0                            #Current player score(int)
-        self.__curent_questions_index = 0           #Index of the current question (int)
+        self.__question_bank = questions
+        self.__score = 0
+        self.__curent_questions_index = 0
 
     def display_question(self):
         ''' 
@@ -36,23 +36,17 @@ class QuizGame:
         This checks if the user chose the correct answer for a selected question.
         '''
         if user_answer.lower() == current_question.get_correct_answer().lower():
-            self.correct_answer()
+            os.system('cls')
+            print("Correct!")
+            self.__score += 1
+            self.__curent_questions_index += 1
+            input("")
+            self.display_question()
         else:
-            self.wrong_answer()
-
-    def correct_answer(self):
-        os.system('cls')
-        print("Correct!")
-        self.__score += 1
-        self.__curent_questions_index += 1
-        input("")
-        self.display_question()
-
-    def wrong_answer(self):
-        os.system('cls')
-        print("Incorrect!")
-        input("")
-        self.display_final_results()
+            os.system('cls')
+            print("Incorrect!")
+            input("")
+            self.display_final_results()
 
     def get_score(self):
         ''' 
@@ -79,9 +73,13 @@ class QuizGame:
         '''
         os.system('cls')
         print("Your Final Score: " + str(self.get_score()))
+        self.save_score()
         self.reset_game()
         input("")
     
+    def save_score(self):
+        pass
+
     def get_questions(self):
         '''
         Returns the question bank.
@@ -128,8 +126,11 @@ def load_questions():
     return questions
 
 def start_game():
-    os.system('cls')
-    player_name = input("Enter your name: ")
+    while True:
+        os.system('cls')
+        player_name = input("Enter your name: ")
+        if player_name:
+            break
     current_player = Player(player_name)
     quiz_game = QuizGame(load_questions())
     quiz_game.shuffle_question_bank()
