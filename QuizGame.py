@@ -39,14 +39,18 @@ class QuizGame:
             os.system('cls')
             print("Correct!")
             self.__score += 1
-            self.__curent_questions_index += 1
-            input("")
-            self.display_question()
         else:
             os.system('cls')
             print("Incorrect!")
-            input("")
-            self.display_final_results()
+        
+        input("Press Enter to continue...") # Pause so user can read "Correct!" or "Incorrect!"
+
+        self.__curent_questions_index += 1 # Always advance to the next question
+
+        if self.__curent_questions_index < len(self.__question_bank):
+            self.display_question() # Display next question if available
+        else:
+            self.display_final_results() # End game if all questions answered
 
     def get_score(self):
         ''' 
@@ -121,12 +125,17 @@ def load_questions():
     questions = [
         Question("The sky is blue.",["True","False"],"A"),
         Question("The Philippine flag has four colors.",["True","False"],"A"),
-        Question("Which of the following is the smallest continent?.",["North America","South America","Africa","Australia"],"D"),
-        Question("Which company develop the Andriod Operating system?." ["Apple", "Microsoft", "Amazon", "Google"], "D"),
-        Question("Which of the following is a type of Malware?." ["Firewall", "Antivirus", "Trojan Horse", "Kaspersky"], "C"),
-        Question("What does "HTTP" stand for?." ["HyperText Transfer Protocool", "HyperText Transfer Protocol", "HyperText Transmision Protocol", "HyperText Transmission Protocol"], "B"),
-        Question("What does "OOP" stand for?." ["Oriented-Object Programming", "Object-Oriented Programming", "Object-Oriented Program", "Organize-Object Programming", "B"]),
-        Question("Which gas do plants absord from the atmosphere during photosynthesis?." ["Carbon Dioxide", "Oxygen", "Nitrogen", "Hydrogen"], "A"),
+        Question("Which of the following is the smallest continent?",["North America","South America","Africa","Australia"],"D"),
+        Question("Which company developed the Android Operating system?", ["Apple", "Microsoft", "Amazon", "Google"], "D"),
+        Question("Which of the following is a type of Malware?", ["Firewall", "Antivirus", "Trojan Horse", "Kaspersky"], "C"),
+        Question("What does HTTP stand for?", ["HyperText Transfer Protocool", "HyperText Transfer Protocol", "HyperText Transmision Protocol", "HyperText Transmission Protocol"], "B"),
+        Question("What does OOP stand for?", ["Oriented-Object Programming", "Object-Oriented Programming", "Object-Oriented Program", "Organize-Object Programming"], "B"),
+        Question("Which gas do plants absorb from the atmosphere during photosynthesis?", ["Carbon Dioxide", "Oxygen", "Nitrogen", "Hydrogen"], "A"),
+        Question("Which planet is known as the Red Planet?", ["Venus","Mars","Jupiter","Saturn"], "B"),
+        Question("Who wrote the play Romeo and Juliet?", ["William Shakespeare","Charles Dickens","Mark Twain","Leo Tolstoy"], "A"),
+        Question("What is the capital city of Japan?", ["Seoul","Beijing","Tokyo","Bangkok"], "C"),
+        Question("Which element has the chemical symbol O?", ["Gold","Oxygen","Osmium","Ozone"], "B"),
+        Question("In what year did the Titanic sink?", ["1912","1920","1905","1899"], "A")
     ]
     return questions
 
