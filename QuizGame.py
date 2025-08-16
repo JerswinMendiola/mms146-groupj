@@ -135,9 +135,14 @@ def load_questions():
         Question("Who wrote the play Romeo and Juliet?", ["William Shakespeare","Charles Dickens","Mark Twain","Leo Tolstoy"], "A"),
         Question("What is the capital city of Japan?", ["Seoul","Beijing","Tokyo","Bangkok"], "C"),
         Question("Which element has the chemical symbol O?", ["Gold","Oxygen","Osmium","Ozone"], "B"),
-        Question("In what year did the Titanic sink?", ["1912","1920","1905","1899"], "A")
-        Question("What is the capital of the Philippines?", ["Quezon City","Cebu","Manila","Davao"], "C")
-        
+        Question("In what year did the Titanic sink?", ["1912","1920","1905","1899"], "A"),
+        Question("What is the capital of the Philippines?", ["Quezon City","Cebu","Manila","Davao"], "C"),
+        Question("Which philosopher is known for the famous statement, 'I think, therefore I am'?", ["Socrates","René Descartes","Aristotle","Plato"], "B"),
+        Question("What does DSLR stand for?", ["Digital Single-Lens Reflex","Dual Shutter Lens Range","Digital Shutter Light Recorder","Dynamic Single-Lens Render"], "A"),
+        Question("Which online game became a hit during the pandemic where players are 'crewmates' or 'impostors'?", ["Roblox","Among Us","Genshin Impact","Valorant"], "B"),
+        Question("Where is Kilometer Zero located in the Philippines?", ["Malacañang Palace","Quezon Memorial Circle, Quezon City","Magellan’s Cross, Cebu City","Rizal Park, Manila"], "D"),
+
+
     ]
     return questions
 
