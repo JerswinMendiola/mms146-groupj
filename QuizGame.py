@@ -136,6 +136,8 @@ def load_questions():
         Question("What is the capital city of Japan?", ["Seoul","Beijing","Tokyo","Bangkok"], "C"),
         Question("Which element has the chemical symbol O?", ["Gold","Oxygen","Osmium","Ozone"], "B"),
         Question("In what year did the Titanic sink?", ["1912","1920","1905","1899"], "A")
+        Question("In what year did the Titanic sink?", ["1912","1920","1905","1899"], "A")
+        
     ]
     return questions
 
