@@ -141,6 +141,12 @@ def load_questions():
         Question("What does DSLR stand for?", ["Digital Single-Lens Reflex","Dual Shutter Lens Range","Digital Shutter Light Recorder","Dynamic Single-Lens Render"], "A"),
         Question("Which online game became a hit during the pandemic where players are 'crewmates' or 'impostors'?", ["Roblox","Among Us","Genshin Impact","Valorant"], "B"),
         Question("Where is Kilometer Zero located in the Philippines?", ["Malacañang Palace","Quezon Memorial Circle, Quezon City","Magellan’s Cross, Cebu City","Rizal Park, Manila"], "D"),
+        Question("What is the chemical symbol for Sodium?", ["Na","So","Sn","Sd"], "A"),
+        Question("Which number is the Roman numeral 'X'?", ["5","10","50","100"], "B"),
+        Question("What is the largest planet in our solar system?", ["Earth","Jupiter","Saturn","Neptune"], "B"),
+        Question("Which company created the video game franchise 'Pokémon'?", ["Nintendo","Sony","Microsoft","Sega"], "A"),
+        Question("Emilio Aguinaldo was the first President of the Philippines.", ["True","False"], "A"),
+        
 
 
     ]
