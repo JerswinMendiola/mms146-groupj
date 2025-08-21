@@ -12,7 +12,13 @@ def send_to_option(option):
         start_game()
         return
     elif option == 2:
-        print("HELP MENU GOES HERE")
+        print("INSTRUCTIONS:")
+        print("1. Enter your name to start the game.")
+        print("2. You will be asked multiple choice or true/false questions.")
+        print("3.Type the letter of your chosen answer (A, B, C, or D).")
+        print("4. Each correct answer earns you a point!")
+        print("5. Try to get the highest score possible.")
+        print("6. You can view the highscores from the main menu.")
     elif option == 3:
         print("HIGHSCORES:")
     else:
