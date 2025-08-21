@@ -1,3 +1,4 @@
+from AbstractQuizGame import AbstractQuizGame
 from Question import Question
 from Player import Player
 import os
