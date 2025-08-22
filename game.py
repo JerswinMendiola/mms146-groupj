@@ -13,12 +13,13 @@ def send_to_option(option):
         return
     elif option == 2:
         print("INSTRUCTIONS:")
-        print("1. Enter your name to start the game.")
-        print("2. You will be asked multiple choice or true/false questions.")
-        print("3.Type the letter of your chosen answer (A, B, C, or D).")
-        print("4. Each correct answer earns you a point!")
-        print("5. Try to get the highest score possible.")
-        print("6. You can view the highscores from the main menu.")
+        print("1. To start the game, enter your name.")
+        print("2. Answer a series of random multiple-choice or true/false questions on a variety of topics.")
+        print("3. Type the letter of your answer (A, B, C, or D) and press Enter to submit.")
+        print("4. Earn one point for each correct answer.")
+        print("5. The goal is to get the highest score you can!")
+        print("6. You can view the highscores from the Main Menu.")
+        print("Press Enter to go back to Main Menu...")
     elif option == 3:
         print("HIGHSCORES:")
         scores = load_scores()
