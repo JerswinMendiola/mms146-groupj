@@ -21,6 +21,13 @@ def send_to_option(option):
         print("6. You can view the highscores from the main menu.")
     elif option == 3:
         print("HIGHSCORES:")
+        scores = load_scores()
+        if len(scores) > 0:
+            for i in scores:
+                print(i[0])
+                print(i[1])
+        else:
+            print("There are no scores!")
     else:
         exit()
     input()
@@ -72,6 +79,30 @@ def load_questions():
     ]
     return questions
 
+def load_scores():
+    '''
+    Load all scores from the text file and return as dictionary.
+    Creates empty file if it doesn't exist.
+    '''
+    scores = []
+    save_data_file = "save_data.txt"
+    
+    if not os.path.exists(save_data_file):
+        pass
+    else:
+        with open(save_data_file, 'r') as save_file:
+            line_count = 0
+            player_name = ""
+            for line in save_file:
+                line = line.strip()
+                if line_count % 2 == 0:
+                    player_name = line
+                else:
+                    score = int(line)
+                    scores.append([player_name, score])
+                line_count += 1
+    return scores
+    
 def start_game():
     while True:
         os.system('cls')
@@ -79,9 +110,7 @@ def start_game():
         if player_name:
             break
     current_player = Player(player_name)
-    quiz_game = QuizGame(load_questions())
-    quiz_game.shuffle_question_bank()
-    quiz_game.display_question()
+    quiz_game = QuizGame(load_questions(), current_player)
 
 if __name__ == "__main__":
     while True:

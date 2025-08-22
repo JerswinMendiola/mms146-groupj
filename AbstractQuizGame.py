@@ -12,7 +12,7 @@ class AbstractQuizGame(ABC):
         pass
 
     @abstractmethod
-    def get_score(self):
+    def get_score(self) -> int:
         """Retrieve the current score of the player."""
         pass
 
@@ -31,8 +31,4 @@ class AbstractQuizGame(ABC):
         """Display the final results of the quiz."""
         pass
 
-    @abstractmethod
-    def save_score(self):
-        """Save the player's score."""
-        pass
 
