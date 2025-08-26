@@ -1,7 +1,7 @@
 class Player:
     def __init__(self, player_name: str):
         ''' 
-        Initialization of a new Player object
+        Initializes a new Player object with the given name.
         '''
         self._player_name = player_name
 
