@@ -90,6 +90,9 @@ class QuizGame(AbstractQuizGame):
         input("")
     
     def get_player(self):
+        '''
+        Returns the Player object associated with the current game.
+        '''
         return self.__player
     
     def save_score(self,name,score):
@@ -140,6 +143,13 @@ class QuizGame(AbstractQuizGame):
         return scores
 
     def check_player_saves(self, player):
+        '''
+        Checks for a saved game for the current player.
+
+        This function checks if a save file exists for the given player name.
+        If a file exists, it asks the user if they want to continue their saved game or start a new one.
+        If no file exists or the user chooses a new game, the questions are shuffled and the game begins.
+        '''
         player_name = player.get_name()
         if not os.path.exists(player_name + ".txt"):
             self.shuffle_question_bank()
@@ -157,6 +167,12 @@ class QuizGame(AbstractQuizGame):
                 self.display_question()
 
     def load_player_progress(self, player_name):
+        '''
+        Loads a saved game state for the player from a text file.
+
+        The function reads the player's score and the list of remaining questions from the save file.
+        It then updates the game state with the loaded data.
+        '''
         questions = []
         with open(player_name + ".txt", 'r', encoding="utf-8") as file:
             lines = file.readlines()
@@ -188,6 +204,13 @@ class QuizGame(AbstractQuizGame):
         self.display_question()
         
     def save_player_progress(self):
+        '''
+        Saves the current player's game progress to a text file.
+
+        The function stores the player's current score and the remaining questions
+        in a file named after the player. This allows the user to continue their game
+        at a later time.
+        '''
         player_name = self.get_player().get_name()
         with open(player_name + ".txt", 'w', encoding="utf-8") as file:
                 file.write(str(self.get_score()) + "\n")

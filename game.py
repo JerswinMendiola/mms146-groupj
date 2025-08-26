@@ -7,6 +7,15 @@ def get_questions(self):
     return self.__question_bank
 
 def send_to_option(option):
+    '''
+    Directs the user to the selected menu option.
+
+    This function clears the console and executes the logic corresponding to the user's menu choice.
+    - Option 1: Starts the quiz game.
+    - Option 2: Displays game instructions.
+    - Option 3: Shows the highscores.
+    - Any other option: Exits the program.
+    '''
     os.system('cls')
     if option == 1:
         start_game()
@@ -37,6 +46,12 @@ def send_to_option(option):
 
 on_main_menu = True
 def main_menu(main_menu):
+    '''
+    Displays the main menu of the quiz game.
+
+    This function clears the console, presents the user with a list of options (Start, Instructions, Highscores, Quit),
+    and prompts for a selection. It then validates the input and calls `send_to_option` with the user's choice.
+    '''
     os.system('cls')
     print("Welcome to the Smartest Byte!")
     print("1 - Start the game")
@@ -52,6 +67,10 @@ def main_menu(main_menu):
         send_to_option(option)
 
 def load_questions():
+    '''
+    Initializes and returns a list of Question objects.
+    This function creates a static list of questions, each with a question string, a list of answer options, and the correct answer.
+    '''
     questions = [
         Question("The sky is blue.",["True","False"],"A"),
         Question("The Philippine flag has four colors.",["True","False"],"A"),
@@ -105,6 +124,11 @@ def load_scores():
     return scores
     
 def start_game():
+    '''
+    Initiates the quiz game.
+    This function prompts the user to enter their name, creates a `Player` instance, and then
+    starts a `QuizGame` with the loaded questions and the new player.
+    '''
     while True:
         os.system('cls')
         player_name = input("Enter your name: ")
